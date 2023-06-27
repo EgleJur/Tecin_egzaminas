@@ -1,5 +1,7 @@
 package lt.techin.ejuraityte.worker;
 
+import lt.techin.ejuraityte.meal.Meal;
+import lt.techin.ejuraityte.meal.MealDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static lt.techin.ejuraityte.worker.WorkerMapper.toWorker;
+import static lt.techin.ejuraityte.worker.WorkerMapper.toWorkerDto;
+import static org.springframework.http.ResponseEntity.ok;
+
 @RestController
-@RequestMapping("/workers")
+@RequestMapping("/api/v1/workers")
 public class WorkerController {
     private final WorkerService workerService;
 
@@ -19,31 +25,26 @@ public class WorkerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Worker>> getAllWorkers() {
-        List<Worker> workers = workerService.getAllWorkers();
-        return new ResponseEntity<>(workers, HttpStatus.OK);
+    public List<Worker> getAll() {
+        return workerService.getAllWorkers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Worker> getWorkerById(@PathVariable("id") Long id) {
-        Optional<Worker> worker = workerService.getWorkerById(id);
-        return worker.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public Optional<Worker> getWorkerById(@PathVariable Long id) {
+        return workerService.getWorkerById(id);
     }
 
     @PostMapping
-    public ResponseEntity<Worker> createWorker(@RequestBody Worker worker) {
-        Worker createdWorker = workerService.createWorker(worker);
-        return new ResponseEntity<>(createdWorker, HttpStatus.CREATED);
+    public ResponseEntity<WorkerDto> createWorker(@RequestBody WorkerDto placeDto) {
+
+        return ok(toWorkerDto(workerService.createWorker(toWorker(placeDto))));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Worker> updateWorker(@PathVariable("id") Long id, @RequestBody Worker updatedWorker) {
-        Worker worker = workerService.updateWorker(id, updatedWorker);
-        if (worker != null) {
-            return new ResponseEntity<>(worker, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<Worker> edit(@PathVariable Long id,
+                                      @RequestBody WorkerDto workerDto) {
+
+        return ok(workerService.edit(id, toWorker(workerDto)));
     }
 
     @DeleteMapping("/{id}")

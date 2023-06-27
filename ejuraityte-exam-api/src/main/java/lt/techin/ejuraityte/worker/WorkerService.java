@@ -1,5 +1,6 @@
 package lt.techin.ejuraityte.worker;
 
+import lt.techin.ejuraityte.place.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,25 @@ public class WorkerService {
         return null;
     }
 
+    public Worker edit(Long id, Worker updatedWorker) {
+
+//        isValidByName(meal.getName());
+        Optional<Worker> existingWorker = workerRepository.findById(id);
+        if (existingWorker.isPresent()) {
+            Worker worker = existingWorker.get();
+            worker.setName(updatedWorker.getName());
+            worker.setSurname(updatedWorker.getSurname());
+            worker.setSpeciality(updatedWorker.getSpeciality());
+            worker.setCity(updatedWorker.getCity());
+            worker.setPlace(updatedWorker.getPlace());
+            return workerRepository.save(worker);
+        }
+        return null;
+    }
+
     public void deleteWorker(Long id) {
         workerRepository.deleteById(id);
     }
 }
+
+
