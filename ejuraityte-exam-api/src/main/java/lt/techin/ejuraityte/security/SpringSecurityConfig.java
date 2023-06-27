@@ -23,8 +23,7 @@
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        http.authorizeHttpRequests((authz) -> authz
-//                .antMatchers("/api/v1/menu").authenticated() // Allow authenticated access to /api/v1/menu
-//                .antMatchers("/message").authenticated()) // Allow authenticated access to /api/v1/other
+//                .antMatchers("/api/v1/places").authenticated() // Allow authenticated access to /api/v1/menu
 //            .httpBasic();
 //
 //        return http.build();

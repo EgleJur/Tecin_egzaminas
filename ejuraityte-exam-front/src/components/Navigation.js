@@ -29,18 +29,13 @@ function Navigation() {
                   </Link>
                 </div>
                 <div className="nav-item">
-                  <Link to="/menu" className="nav-link">
-                    Meniu
+                  <Link to="/places" className="nav-link">
+                    Servisai
                   </Link>
                 </div>
                 <div className="nav-item">
-                  <Link to="/orders" className="nav-link">
-                    Užsakymai
-                  </Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/meals" className="nav-link">
-                    Patiekalai
+                  <Link to="/workers" className="nav-link">
+                    Meistrai
                   </Link>
                 </div>
 

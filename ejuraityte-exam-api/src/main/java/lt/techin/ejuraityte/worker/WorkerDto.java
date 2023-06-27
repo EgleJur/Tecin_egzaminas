@@ -26,5 +26,4 @@ public class WorkerDto {
     @NotBlank
     private String city;
 
-    private Place place;
 }

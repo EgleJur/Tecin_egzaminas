@@ -1,7 +1,5 @@
 package lt.techin.ejuraityte.place;
 
-import lt.techin.ejuraityte.meal.Meal;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

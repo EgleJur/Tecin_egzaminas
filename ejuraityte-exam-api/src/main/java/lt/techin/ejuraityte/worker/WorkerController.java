@@ -1,7 +1,5 @@
 package lt.techin.ejuraityte.worker;
 
-import lt.techin.ejuraityte.meal.Meal;
-import lt.techin.ejuraityte.meal.MealDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,16 +33,17 @@ public class WorkerController {
     }
 
     @PostMapping
-    public ResponseEntity<WorkerDto> createWorker(@RequestBody WorkerDto placeDto) {
+    public ResponseEntity<WorkerDto> createWorker(@RequestBody WorkerDto placeDto, @RequestParam Long place_id ) {
 
-        return ok(toWorkerDto(workerService.createWorker(toWorker(placeDto))));
+        return ok(toWorkerDto(workerService.createWorker(toWorker(placeDto), place_id)));
     }
 
     @PatchMapping("/edit/{id}")
     public ResponseEntity<Worker> edit(@PathVariable Long id,
-                                      @RequestBody WorkerDto workerDto) {
+                                      @RequestBody WorkerDto workerDto, @RequestParam Long place_id ) {
 
-        return ok(workerService.edit(id, toWorker(workerDto)));
+
+        return ok(workerService.edit(id, toWorker(workerDto), place_id));
     }
 
     @DeleteMapping("/{id}")

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lt.techin.ejuraityte.orderingMeals.OrderingMeals;
 import lt.techin.ejuraityte.worker.Worker;
 
 import javax.persistence.*;

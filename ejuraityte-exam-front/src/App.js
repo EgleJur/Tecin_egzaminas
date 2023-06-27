@@ -1,20 +1,16 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navigation from "./components/Navigation";
-import OrderListPage from "./pages/ordering/OrderList";
-import CreateOrderPage from "./pages/ordering/CreateOrder";
-import ViewOrderPage from "./pages/ordering/ViewOrder";
-import EditOrderPage from "./pages/ordering/EditOrder";
 
-import MealListPage from "./pages/meal/MealList";
-import CreateMealPage from "./pages/meal/CreateMeal";
-import ViewMealPage from "./pages/meal/ViewMeal";
-import EditMealPage from "./pages/meal/EditMeal";
+import WorkerListPage from "./pages/worker/WorkerList";
+import WorkerCreatePage from "./pages/worker/WorkerCreate";
+import WorkerViewPage from "./pages/worker/WorkerView";
+import WorkerEditPage from "./pages/worker/WorkerEdit";
 
-import MenuListPage from "./pages/menu/MenuList";
-import CreateMenuPage from "./pages/menu/CreateMenu";
-import ViewMenuPage from "./pages/menu/ViewMenu";
-import EditMenuPage from "./pages/menu/EditMenu";
+import PlaceListPage from "./pages/place/PlaceList";
+import PlaceCreatePage from "./pages/place/PlaceCreate";
+import PlaceViewPage from "./pages/place/PlaceView";
+import PlaceEditPage from "./pages/place/PlaceEdit";
 
 
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -38,22 +34,17 @@ function App() {
           <Navigation />
           <div className="container-xxl">
             <Routes>
-              <Route path="/" element={<MenuListPage />} />
+              <Route path="/" element={<PlaceListPage />} />
 
-              <Route path="Menu" element={<MenuListPage />} />
-              <Route path="Menu/create" element={<CreateMenuPage />} />
-              <Route path="Menu/view/:id" element={<ViewMenuPage />} />
-              <Route path="Menu/edit/:id" element={<EditMenuPage />} />
+              <Route path="workers" element={<WorkerListPage />} />
+              <Route path="workers/create" element={<WorkerCreatePage />} />
+              <Route path="workers/view/:id" element={<WorkerViewPage />} />
+              <Route path="workers/edit/:id" element={<WorkerEditPage />} />
 
-              <Route path="orders" element={<OrderListPage />} />
-              <Route path="orders/create" element={<CreateOrderPage />} />
-              <Route path="orders/view/:id" element={<ViewOrderPage />} />
-              <Route path="orders/edit/:id" element={<EditOrderPage />} />
-
-              <Route path="meals" element={<MealListPage />} />
-              <Route path="meals/create" element={<CreateMealPage />} />
-              <Route path="meals/view/:id" element={<ViewMealPage />} />
-              <Route path="meals/edit/:id" element={<EditMealPage />} />
+              <Route path="places" element={<PlaceListPage />} />
+              <Route path="places/create" element={<PlaceCreatePage />} />
+              <Route path="places/view/:id" element={<PlaceViewPage />} />
+              <Route path="places/edit/:id" element={<PlaceEditPage />} />
 
             </Routes>
           </div>

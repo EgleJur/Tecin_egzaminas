@@ -12,8 +12,11 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "WORKER")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Worker {
+    public Worker() {
+        this.place = new Place();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,5 +37,6 @@ public class Worker {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "place_id")
     private Place place;
+
 
 }

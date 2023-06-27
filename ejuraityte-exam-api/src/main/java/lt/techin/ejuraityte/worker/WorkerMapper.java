@@ -8,7 +8,6 @@ public class WorkerMapper {
         worker.setSurname(workerDto.getSurname());
         worker.setSpeciality(workerDto.getSpeciality());
         worker.setCity(workerDto.getCity());
-        worker.setPlace(workerDto.getPlace());
         return worker;
     }
 
@@ -18,7 +17,6 @@ public class WorkerMapper {
         workerDto.setSurname(worker.getSurname());
         workerDto.setSpeciality(worker.getSpeciality());
         workerDto.setCity(worker.getCity());
-        workerDto.setPlace(worker.getPlace());
         return workerDto;
     }
 }
